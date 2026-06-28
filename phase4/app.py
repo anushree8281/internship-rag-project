@@ -18,10 +18,11 @@ else:
     GROQ_KEY = "your_fallback_local_key_here"
 
 def load_rag_resources():
-    """Loads your processed text chunks so the app only reads them once."""
-    with open("chunks.pkl", "rb") as f:
+    """Loads your processed text chunks using explicit subfolder paths."""
+    # We add "phase4/" in front of the filenames so Streamlit knows exactly where to look
+    with open("phase4/chunks.pkl", "rb") as f:
         processed_texts = pickle.load(f)
-    with open("chunk_embeddings.pkl", "rb") as f:
+    with open("phase4/chunk_embeddings.pkl", "rb") as f:
         chunk_embeddings = pickle.load(f)
     return processed_texts, chunk_embeddings
 
